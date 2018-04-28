@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">myGithubClient</string>
+    <string name="github">GitHub</string>
+    <string name="tr0lczyk_production">tr0lczyk production</string>
 </resources>

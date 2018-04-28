@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlActivated">#3232FF</item>
+        <item name="colorControlNormal">#a8a8a8</item>
+    </style>
+
 </resources>
