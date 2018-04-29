@@ -1,13 +1,16 @@
 package com.example.android.mygithubclient;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +33,6 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
     }
 
     private RepositoryAdapter newAdapter;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +57,22 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
         return rootView;
     }
 
+    public void alertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Username search");
+        builder.setMessage("There is no user named ...");
+        builder.setPositiveButton("Search again", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                SearchFragment searchFragment= new SearchFragment();
+                android.support.v4.app.FragmentManager manager = getFragmentManager();
+                manager.beginTransaction().replace(R.id.view_pager, searchFragment,searchFragment.getTag()).commit();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
     @Override
     public Loader<List<Repository>> onCreateLoader(int id, Bundle args) {
         String urlLink = getArguments().getString("urlLink");
@@ -64,7 +82,11 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
     @Override
     public void onLoadFinished(Loader<List<Repository>> loader, List<Repository> data) {
         newAdapter.clear();
-        newAdapter.addAll(data);
+        if(data != null && !data.isEmpty()){
+            newAdapter.addAll(data);
+        } else {
+            alertDialog();
+        }
     }
 
     @Override
