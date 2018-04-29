@@ -1,12 +1,12 @@
 package com.example.android.mygithubclient;
 
-public class Repository {
+public class Repository implements Comparable<Repository> {
 
     private String fullName;
 
-    private int starsGiven;
+    private String starsGiven;
 
-    public Repository(String fullName, int starsGiven){
+    public Repository(String fullName, String starsGiven){
         this.fullName = fullName;
         this.starsGiven = starsGiven;
     }
@@ -15,7 +15,12 @@ public class Repository {
         return fullName;
     }
 
-    public int getStarsGiven() {
+    public String getStarsGiven() {
         return starsGiven;
+    }
+
+    @Override
+    public int compareTo( Repository repository) {
+        return fullName.compareTo(repository.fullName);
     }
 }

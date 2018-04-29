@@ -13,4 +13,11 @@
         <item name="colorControlNormal">#a8a8a8</item>
     </style>
 
+    <style name="listView_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
 </resources>

@@ -1,4 +1,3 @@
-/*
 package com.example.android.mygithubclient;
 
 import android.text.TextUtils;
@@ -21,10 +20,9 @@ import static com.example.android.mygithubclient.MainActivity.LOG;
 
 public class Networking {
 
-     */
-/** While working on this QueryUtils class, I used the code I got familiar with during the
+     /** While working on this QueryUtils class, I used the code I got familiar with during the
      * networking part of Udacity android nanodegree scholarship I am currently taking part in.
-     * *//*
+     * */
 
 
 
@@ -89,32 +87,29 @@ public class Networking {
         return output.toString();
     }
 
-    private static List<MarketRecord> extractFeatureFromJson(String marketRecordJson) {
-        if (TextUtils.isEmpty(marketRecordJson)) {
+    private static List<Repository> extractFeatureFromJson(String repositoryJson) {
+        if (TextUtils.isEmpty(repositoryJson)) {
             return null;
         }
 
-        List<MarketRecord> marketRecords = new ArrayList<>();
+        List<Repository> repositories = new ArrayList<>();
 
         try {
-            JSONObject baseJsonResponse = new JSONObject(marketRecordJson);
-            JSONArray marketRecordArray = baseJsonResponse.getJSONArray("markets");
-            for (int i = 0; i < baseJsonResponse.length(); i++) {
-                JSONObject currentMarketRecord = marketRecordArray.getJSONObject(i);
-                String instrumentName = currentMarketRecord.getString("instrumentName");
-                String instrumentBid = currentMarketRecord.getString("displayBid");
-                String instrumentOffer = currentMarketRecord.getString("displayOffer");
-                MarketRecord newMarketRecord = new MarketRecord(instrumentName, instrumentBid, instrumentOffer);
-                marketRecords.add(newMarketRecord);
+            JSONArray repositoryJsonArray = new JSONArray(repositoryJson);
+            for (int i = 0; i < repositoryJsonArray.length(); i++) {
+                JSONObject currentRepository = repositoryJsonArray.getJSONObject(i);
+                String fullName = currentRepository.getString("full_name");
+                String starsGiven = currentRepository.getString("stargazers_count").toString();
+                Repository repository = new Repository(fullName, starsGiven);
+                repositories.add(repository);
             }
         } catch (JSONException e) {
             Log.e("QueryUtils", "Error parsing JSON", e);
         }
-        Collections.sort(marketRecords);
-        return marketRecords;
+        return repositories;
     }
 
-    public static List<MarketRecord> fetchMarketRecordData(String requestUrl) {
+    public static List<Repository> fetchMarketRecordData(String requestUrl) {
         URL url = createUrl(requestUrl);
         String jsonResponse = null;
         try {
@@ -122,8 +117,7 @@ public class Networking {
         } catch (IOException e) {
             Log.e(LOG, "Error with HTTP request", e);
         }
-        List<MarketRecord> marketRecords = extractFeatureFromJson(jsonResponse);
-        return marketRecords;
+        List<Repository> repositories = extractFeatureFromJson(jsonResponse);
+        return repositories;
     }
 }
-*/
