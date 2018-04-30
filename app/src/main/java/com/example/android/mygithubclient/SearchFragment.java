@@ -1,25 +1,22 @@
 package com.example.android.mygithubclient;
-
-
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 public class SearchFragment extends Fragment {
 
     public SearchFragment() {}
 
-    public String usersInput;
+    public String userInput;
     private EditText editText;
     private String urlLink = "https://api.github.com/users/{user}/repos";
     public String outputLink;
@@ -34,20 +31,26 @@ public class SearchFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                usersInput = editText.getText().toString().trim();
-                outputLink = urlLink.replace("{user}", usersInput);
+                UIUtil.hideKeyboard(getActivity());
+                getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                userInput = editText.getText().toString().trim();
+                outputLink = urlLink.replace("{user}", userInput);
                 RepositoryFragment repositoryFragment= new RepositoryFragment();
-                repositoryFragment.setArguments(buildBundle(outputLink));
+                repositoryFragment.setArguments(buildBundle(outputLink, userInput));
                 android.support.v4.app.FragmentManager manager = getFragmentManager();
                 manager.beginTransaction().replace(R.id.view_pager, repositoryFragment,repositoryFragment.getTag()).addToBackStack(null).commit();
+
             }
         });
         return rootView;
     }
 
-    private Bundle buildBundle(String urlLink) {
+    private Bundle buildBundle(String urlLink, String userName) {
         Bundle bundle = new Bundle();
         bundle.putString("urlLink", urlLink);
+        bundle.putString("userName",userName);
         return bundle;
     }
+
+
 }
