@@ -24,8 +24,6 @@ public class Networking {
      * networking part of Udacity android nanodegree scholarship I am currently taking part in.
      * */
 
-
-
     private static final int READ_TIMEOUT = 10000;
     private static final int CONNECT_TIMEOUT = 15000;
     private static final int SUCCESS_CODE = 200;
