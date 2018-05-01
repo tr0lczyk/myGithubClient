@@ -10,21 +10,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class RepositoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Repository>>  {
 
     public RepositoryFragment() {
@@ -61,9 +56,7 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
             int loaderId = 0;
             loaderManager.initLoader(loaderId, null, this);
         } else {
-            Toast toast = Toast.makeText(getActivity(),R.string.no_connect,Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
+            alertDialogNetwork();
         }
         return rootView;
     }
@@ -87,6 +80,24 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
         int shot = random.nextInt(4);
         builder.setMessage(answers[shot]);
         builder.setPositiveButton("Search again", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                SearchFragment searchFragment= new SearchFragment();
+                android.support.v4.app.FragmentManager manager = getFragmentManager();
+                manager.beginTransaction().replace(R.id.view_pager, searchFragment,searchFragment.getTag()).commit();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void alertDialogNetwork(){
+        View progressBar = rootView.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("No internet connection :(");
+        builder.setMessage("Please check your wifi or network.");
+        builder.setPositiveButton("Return", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 SearchFragment searchFragment= new SearchFragment();

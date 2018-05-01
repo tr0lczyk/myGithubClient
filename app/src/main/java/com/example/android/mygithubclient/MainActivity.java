@@ -1,9 +1,5 @@
 package com.example.android.mygithubclient;
 
-import android.app.Fragment;
-import android.content.Context;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

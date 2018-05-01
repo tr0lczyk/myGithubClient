@@ -11,11 +11,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class DetailsFragment extends Fragment {
 
     public DetailsFragment() {
