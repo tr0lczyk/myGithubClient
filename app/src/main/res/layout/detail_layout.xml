@@ -280,7 +280,7 @@
             android:layout_height="wrap_content"
             android:text="Issues"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor='"@color/base_dark_grey_color"'
+            android:textColor="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
             app:layout_constraintStart_toEndOf="@+id/imageView7"
             app:layout_constraintTop_toTopOf="@+id/imageView7" />
@@ -292,7 +292,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor='"@color/base_dark_grey_color"'
+            android:textColor="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/issuesDesription"

@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,11 +29,11 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
 
 
     public RepositoryFragment() {
-        // Required empty public constructor
     }
 
     private RepositoryAdapter newAdapter;
     private View rootView;
+    private ArrayList<Repository> repositories;
 
 
     @Override
@@ -40,7 +41,7 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.item_list,container,false);
         ListView listView = rootView.findViewById(R.id.listView);
-        newAdapter = new RepositoryAdapter(getActivity(), new ArrayList<Repository>());
+        newAdapter = new RepositoryAdapter(getActivity(), repositories);
         listView.setAdapter(newAdapter);
 
         ConnectivityManager connectionPossible = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -55,6 +56,17 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Repository currentRepository = repositories.get(position);
+                DetailsFragment detailsFragment= new DetailsFragment();
+                android.support.v4.app.FragmentManager manager = getFragmentManager();
+                manager.beginTransaction().replace(R.id.view_pager, detailsFragment).addToBackStack(null).commit();
+
+            }
+        });
         return rootView;
     }
 

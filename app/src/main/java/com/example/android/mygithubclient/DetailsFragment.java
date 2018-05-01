@@ -18,13 +18,15 @@ public class DetailsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    private View rootView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
+        rootView = inflater.inflate(R.layout.detail_layout,container,false);
+
+        return rootView;
     }
 
 }
