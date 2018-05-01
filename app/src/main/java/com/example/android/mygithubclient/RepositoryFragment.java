@@ -27,7 +27,6 @@ import java.util.Random;
  */
 public class RepositoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Repository>>  {
 
-
     public RepositoryFragment() {
     }
 
@@ -35,14 +34,24 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
     private View rootView;
     private ArrayList<Repository> repositories;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.item_list,container,false);
         ListView listView = rootView.findViewById(R.id.listView);
+        repositories = new ArrayList<>();
         newAdapter = new RepositoryAdapter(getActivity(), repositories);
         listView.setAdapter(newAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Repository currentRepository = repositories.get(position);
+                DetailsFragment detailsFragment= new DetailsFragment();
+                detailsFragment.setArguments(buildBundle(currentRepository));
+                android.support.v4.app.FragmentManager manager = getFragmentManager();
+                manager.beginTransaction().replace(R.id.view_pager, detailsFragment,detailsFragment.getTag()).addToBackStack(null).commit();
+            }
+        });
 
         ConnectivityManager connectionPossible = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectionPossible.getActiveNetworkInfo();
@@ -56,21 +65,16 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Repository currentRepository = repositories.get(position);
-                DetailsFragment detailsFragment= new DetailsFragment();
-                android.support.v4.app.FragmentManager manager = getFragmentManager();
-                manager.beginTransaction().replace(R.id.view_pager, detailsFragment).addToBackStack(null).commit();
-
-            }
-        });
         return rootView;
     }
 
-    public void alertDialog(){
+    private Bundle buildBundle(Repository repository){
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("object",repository);
+        return bundle;
+    }
+
+    private void alertDialog(){
         String user = getArguments().getString("userName");
         if(user.isEmpty()){
             user = "\"Nothing there\"";

@@ -95,10 +95,29 @@ public class Networking {
         try {
             JSONArray repositoryJsonArray = new JSONArray(repositoryJson);
             for (int i = 0; i < repositoryJsonArray.length(); i++) {
+
                 JSONObject currentRepository = repositoryJsonArray.getJSONObject(i);
+
                 String fullName = currentRepository.getString("full_name");
                 String starsGiven = currentRepository.getString("stargazers_count").toString();
-                Repository repository = new Repository(fullName, starsGiven);
+                String watchersCount = currentRepository.getString("watchers_count").toString();
+                String forksCount = currentRepository.getString("forks_count").toString();
+                boolean openSource = currentRepository.getBoolean("private");
+                String programmingLanguage = currentRepository.getString("language");
+                String issuesCount = currentRepository.getString("open_issues_count").toString();
+                String branchesType = currentRepository.getString("default_branch");
+                String createdDate = currentRepository.getString("created_at");
+                String updatedDate = currentRepository.getString("updated_at");
+                long sizeRepo = currentRepository.getLong("size");
+                String name = currentRepository.getString("name");
+
+                JSONObject owner = currentRepository.getJSONObject("owner");
+
+                String avatar = owner.getString("avatar_url");
+                String userLogin = owner.getString("login");
+                Repository repository = new Repository(fullName, starsGiven, avatar, userLogin,
+                        watchersCount, forksCount, openSource, programmingLanguage, issuesCount,
+                        branchesType, createdDate, updatedDate, sizeRepo, name);
                 repositories.add(repository);
             }
         } catch (JSONException e) {
