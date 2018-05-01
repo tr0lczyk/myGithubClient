@@ -201,7 +201,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/lock" />
+            app:srcCompat="@drawable/lock"
+            android:tint="@color/base_dark_grey_color"/>
 
         <TextView
             android:id="@+id/typeOfRepo"
@@ -210,7 +211,6 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
             android:textSize="14sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
@@ -235,23 +235,249 @@
             android:layout_height="0dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
+            android:tint="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/package" />
+            app:srcCompat="@drawable/programming" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/programmingDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView6"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Package" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout9"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/listPreferredItemHeightSmall"
+        android:background="@drawable/detail_line_background"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:tint="@color/base_dark_grey_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/issue" />
+
+        <TextView
+            android:id="@+id/issuesDesription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Issues"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor='"@color/base_dark_grey_color"'
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+        <TextView
+            android:id="@+id/issuesNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor='"@color/base_dark_grey_color"'
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/issuesDesription"
+            app:layout_constraintTop_toTopOf="@+id/imageView7"
+            tools:text="0" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout11"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/listPreferredItemHeightSmall"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout9"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
+        android:background="@drawable/detail_line_background">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/branch"
+            android:tint="@color/base_dark_grey_color"/>
+
+        <TextView
+            android:id="@+id/branchDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Branch"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/base_dark_grey_color"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/imageView8" />
+
+        <TextView
+            android:id="@+id/branchNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/base_dark_grey_color"
+            app:layout_constraintBottom_toBottomOf="@+id/branchDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/branchDescription"
+            app:layout_constraintTop_toTopOf="@+id/branchDescription"
+            tools:text="0" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout12"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/listPreferredItemHeightSmall"
+        android:background="@drawable/detail_line_background"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:tint="@color/base_dark_grey_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/calendar" />
+
+        <TextView
+            android:id="@+id/createDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/base_dark_grey_color"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+            app:layout_constraintStart_toEndOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/imageView9"
+            tools:text="12/02/2018" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout13"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/listPreferredItemHeightSmall"
+        android:background="@drawable/detail_line_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout12"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/database"
+            android:tint="@color/base_dark_grey_color"/>
+
+        <TextView
+            android:id="@+id/sizeNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/base_dark_grey_color"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toTopOf="@+id/imageView10"
+            tools:text="123.8" />
+
+        <TextView
+            android:id="@+id/sizeMetric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/base_dark_grey_color"
+            app:layout_constraintBottom_toBottomOf="@+id/sizeNumber"
+            app:layout_constraintStart_toEndOf="@+id/sizeNumber"
+            app:layout_constraintTop_toTopOf="@+id/sizeNumber"
+            tools:text="kb" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/detail_line_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout12">
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/update"
+            android:tint="@color/base_dark_grey_color"/>
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Updated at"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/base_dark_grey_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+            app:layout_constraintStart_toEndOf="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="right"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/base_dark_grey_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView16"
+            app:layout_constraintTop_toTopOf="@+id/textView16"
+            tools:text="30/04/2018" />
     </android.support.constraint.ConstraintLayout>
 
 
