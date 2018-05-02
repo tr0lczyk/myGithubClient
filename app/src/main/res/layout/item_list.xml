@@ -3,44 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    style="@style/main_itemlist_style">
+
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/line_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/itemlist_container_style">
 
         <ListView
             android:id="@+id/listView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repository_owner" />
+            app:layout_constraintTop_toBottomOf="@+id/repository_owner"
+            style="@style/listview_style" />
 
         <TextView
             android:id="@+id/repository_owner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/search_line_background"
-            android:padding="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/anon_s_repositories" />
+            tools:text="@string/anon_s_repositories"
+            style="@style/listview_textview_style" />
 
         <ProgressBar
             android:id="@+id/progressBar"

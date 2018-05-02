@@ -14,11 +14,11 @@ import java.util.Date;
 
 public class DetailsFragment extends Fragment {
 
+    private View rootView;
+
     public DetailsFragment() {
         // Required empty public constructor
     }
-
-    private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +46,7 @@ public class DetailsFragment extends Fragment {
         forksCount.setText(currentRepository.getForksCount());
 
         TextView privacy = rootView.findViewById(R.id.typeOfRepo);
-        privacy.setText(boolToString(currentRepository.isOpenSource()));
+        privacy.setText(toRepositoryType(currentRepository.isOpenSource()));
 
         TextView language = rootView.findViewById(R.id.programmingDescription);
         language.setText(currentRepository.getProgrammingLanguage());
@@ -69,16 +69,11 @@ public class DetailsFragment extends Fragment {
         return rootView;
     }
 
-    private String boolToString(boolean isTrue){
-        String output;
-        if(isTrue){
-            output = "Private";
-        } else {
-            output = "Public";
-        }
-        return output;
+    private String toRepositoryType(boolean isOpenSource){
+        return isOpenSource ? "Public": "Private";
     }
 
+    //TODO wyciagnac do osobnej klasy np. FileUtils przydaly by sie unit testy
     private String getFileSize(long size) {
         if (size <= 0){
             return "0";
@@ -88,17 +83,17 @@ public class DetailsFragment extends Fragment {
         return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }
 
+    //TODO wyciagnac do osobnej klasy np. DateUtils przydaly by sie unit testy, co jezeli isoDate jest nieprawidłowe itp
     private String isoDateToNormal(String isoDate){
         SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-        Date dt = new Date();
+        Date date = new Date();
         try{
-            dt = sd1.parse(isoDate.replaceAll("Z$", "+0000"));
+            date = sd1.parse(isoDate.replaceAll("Z$", "+0000"));
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
         SimpleDateFormat sd2 = new SimpleDateFormat("dd-MM-yyyy");
-        String newDate = sd2.format(dt);
-        return newDate;
+        return sd2.format(date);
     }
 
 }

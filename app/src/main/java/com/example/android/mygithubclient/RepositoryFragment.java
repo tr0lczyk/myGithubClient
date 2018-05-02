@@ -1,11 +1,7 @@
 package com.example.android.mygithubclient;
 
-
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -20,14 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+//TODO moim zdaniem w tej klasie jest za duzo wymieszanego kodu typowo UI z androida z kodem ktory robi rzeczy biznesowe
+// moze dalo by sie czesc kodu ktory np tworzy jakies stringi przenies do innej klasy
 public class RepositoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Repository>>  {
-
-    public RepositoryFragment() {
-    }
 
     private RepositoryAdapter newAdapter;
     private View rootView;
     private ArrayList<Repository> repositories;
+
+    public RepositoryFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,6 +35,9 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
         repositories = new ArrayList<>();
         newAdapter = new RepositoryAdapter(getActivity(), repositories);
         listView.setAdapter(newAdapter);
+        LoaderManager loaderManager = getLoaderManager();
+        int loaderId = 0;
+        loaderManager.initLoader(loaderId, null, this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -47,17 +48,6 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
                 manager.beginTransaction().replace(R.id.view_pager, detailsFragment,detailsFragment.getTag()).addToBackStack(null).commit();
             }
         });
-
-        ConnectivityManager connectionPossible = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectionPossible.getActiveNetworkInfo();
-
-        if (networkInfo != null && networkInfo.isConnected()) {
-            LoaderManager loaderManager = getLoaderManager();
-            int loaderId = 0;
-            loaderManager.initLoader(loaderId, null, this);
-        } else {
-            alertDialogNetwork();
-        }
         return rootView;
     }
 
@@ -69,35 +59,15 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
 
     private void alertDialog(){
         String user = getArguments().getString("userName");
-        if(user.isEmpty()){
-            user = "\"Nothing there\"";
-        }
-        String[] answers = {user + " is not a user you are looking for...", "The likes of " + user + " are forbidden in this land!",
-                user + "? More like WRONG USERNAME !!!", "There is no spoon. And there is no " + user + "."};
+        //TODO to moze lepiej w jakims polu klasy zamiast tworzyc za kazdym razem nowe
+        String[] answers = {user + getString(R.string.not_a_user), getString(R.string.likes) + user + getString(R.string.forbidden),
+                user + getString(R.string.wrong), getString(R.string.spoon) + user + getString(R.string.dot)};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Error 404");
+        builder.setTitle(R.string.error);
         Random random = new Random();
         int shot = random.nextInt(4);
         builder.setMessage(answers[shot]);
-        builder.setPositiveButton("Search again", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                SearchFragment searchFragment= new SearchFragment();
-                android.support.v4.app.FragmentManager manager = getFragmentManager();
-                manager.beginTransaction().replace(R.id.view_pager, searchFragment,searchFragment.getTag()).commit();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
-    private void alertDialogNetwork(){
-        View progressBar = rootView.findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.GONE);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("No internet connection :(");
-        builder.setMessage("Please check your wifi or network.");
-        builder.setPositiveButton("Return", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.search, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 SearchFragment searchFragment= new SearchFragment();

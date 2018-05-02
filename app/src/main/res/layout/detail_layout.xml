@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/search_line_background">
+    android:background="@drawable/biggest_line_background">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:background="@color/base_dark_grey_color"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,12 +17,11 @@
 
         <ImageView
             android:id="@+id/avatarImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="@dimen/hundred"
+            android:layout_height="@dimen/hundred"
+            android:layout_marginBottom="@dimen/sixteen"
+            android:layout_marginLeft="@dimen/sixteen"
+            android:layout_marginTop="@dimen/sixteen"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,44 +29,40 @@
 
         <TextView
             android:id="@+id/repositoryName"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginBottom="@dimen/eight"
+            android:layout_marginLeft="@dimen/sixteen"
+            android:layout_marginRight="@dimen/eight"
             android:gravity="left"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#a8a8a8"
-            android:textSize="24sp"
+            android:textColor="@color/base_gray"
+            android:textSize="@dimen/twentyfour"
             app:layout_constraintBottom_toBottomOf="@+id/avatarImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/avatarImage"
-            tools:text="KielceTourGuide" />
+            tools:text="@string/fake_repo_kielce_name" />
 
         <TextView
             android:id="@+id/ownerLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="@dimen/sixteen"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#a8a8a8"
-            android:textSize="18sp"
+            android:textColor="@color/base_gray"
+            android:textSize="@dimen/eighteen"
             app:layout_constraintBottom_toTopOf="@+id/repositoryName"
             app:layout_constraintStart_toEndOf="@+id/avatarImage"
-            tools:text="tr0lczyk" />
+            tools:text="@string/fake_owner_name" />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout4"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:background="@drawable/detail_line_background"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout5"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
@@ -75,10 +70,10 @@
             android:id="@+id/starsDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Stars"
+            android:layout_marginBottom="@dimen/eight"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
+            android:text="@string/stars"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,23 +84,22 @@
             android:id="@+id/starsNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
+            android:layout_marginTop="@dimen/eight"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="0" />
+            tools:text="@string/fake_count" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout5"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
-        android:background="@drawable/detail_line_background"
+        android:background="@drawable/small_detail_line_background"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout6"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
@@ -113,23 +107,23 @@
             android:id="@+id/watchersNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
+            android:layout_marginTop="@dimen/eight"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="0" />
+            tools:text="@string/fake_count" />
 
         <TextView
             android:id="@+id/watchersDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Watchers"
+            android:layout_marginBottom="@dimen/eight"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
+            android:text="@string/watchers"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -139,11 +133,10 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout6"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:background="@drawable/detail_line_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
@@ -151,23 +144,23 @@
             android:id="@+id/forksNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
+            android:layout_marginTop="@dimen/eight"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="0" />
+            tools:text="@string/fake_count" />
 
         <TextView
             android:id="@+id/forksDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Forks"
+            android:layout_marginBottom="@dimen/eight"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
+            android:text="@string/forks"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -177,19 +170,18 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout8"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/sixteen"
         android:background="@drawable/detail_line_background"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout7"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
@@ -201,11 +193,11 @@
 
         <TextView
             android:id="@+id/typeOfRepo"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
-            android:textSize="14sp"
+            android:textSize="@dimen/fourteen"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
@@ -215,9 +207,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout7"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
-        android:background="@drawable/detail_line_background"
+        android:background="@drawable/medium_detail_line_background_three"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout8"
@@ -225,8 +217,8 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:tint="@color/base_dark_grey_color"
@@ -237,7 +229,7 @@
 
         <TextView
             android:id="@+id/programmingDescription"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
@@ -250,17 +242,17 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout9"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
-        android:background="@drawable/detail_line_background"
+        android:background="@drawable/medium_detail_line_background"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:scaleType="centerCrop"
             android:tint="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -272,8 +264,8 @@
             android:id="@+id/issuesDesription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
             android:text="Issues"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
@@ -283,7 +275,7 @@
 
         <TextView
             android:id="@+id/issuesNumber"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
@@ -295,17 +287,17 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout11"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout9"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
-        android:background="@drawable/detail_line_background">
+        android:background="@drawable/medium_detail_line_background_two">
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -317,8 +309,8 @@
             android:id="@+id/branchDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
             android:text="branch"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
@@ -328,10 +320,10 @@
 
         <TextView
             android:id="@+id/branchType"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/eight"
+            android:layout_marginTop="@dimen/eight"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
@@ -342,7 +334,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout12"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
         android:background="@drawable/detail_line_background"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout13"
@@ -351,8 +343,8 @@
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:tint="@color/base_dark_grey_color"
@@ -376,17 +368,17 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout13"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
-        android:background="@drawable/detail_line_background"
+        android:background="@drawable/medium_detail_line_background_three"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout12"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
         <ImageView
             android:id="@+id/imageView10"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -410,9 +402,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeight"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/sixteen"
         android:background="@drawable/xl_detail_line_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -420,8 +412,8 @@
 
         <ImageView
             android:id="@+id/imageView11"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:tint="@color/base_dark_grey_color"
@@ -434,8 +426,8 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/eight"
+            android:layout_marginTop="@dimen/eight"
             android:text="Last update at"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
@@ -448,8 +440,8 @@
             android:id="@+id/updatedDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/eight"
+            android:layout_marginStart="@dimen/eight"
             android:gravity="left"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
@@ -461,8 +453,8 @@
 
         <ImageView
             android:id="@+id/imageView12"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             android:tint="@color/base_dark_grey_color"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -474,7 +466,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout10"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeight"
         android:background="@drawable/xl_detail_line_background"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
@@ -483,8 +475,8 @@
 
         <ImageView
             android:id="@+id/imageView13"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:tint="@color/base_dark_grey_color"
@@ -497,8 +489,8 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/eight"
+            android:layout_marginTop="@dimen/eight"
             android:text="Events"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/base_dark_grey_color"
@@ -509,8 +501,8 @@
 
         <ImageView
             android:id="@+id/imageView14"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -519,7 +511,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="?android:attr/listPreferredItemHeight"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout10"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout10"
@@ -528,8 +520,8 @@
 
         <ImageView
             android:id="@+id/imageView15"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -551,8 +543,8 @@
 
         <ImageView
             android:id="@+id/imageView16"
-            android:layout_width="60dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/zero"
             android:adjustViewBounds="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

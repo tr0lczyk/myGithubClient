@@ -22,6 +22,7 @@ public class Networking {
      /** While working on this QueryUtils class, I used the code I got familiar with during the
      * networking part of Udacity android nanodegree scholarship I am currently taking part in.
      * */
+    private Networking() {}
 
     private static final int READ_TIMEOUT = 10000;
     private static final int CONNECT_TIMEOUT = 15000;
@@ -95,7 +96,7 @@ public class Networking {
             for (int i = 0; i < repositoryJsonArray.length(); i++) {
 
                 JSONObject currentRepository = repositoryJsonArray.getJSONObject(i);
-
+                //TODO wyciagnac ten fragment do innej klasy i metody np public Repository parseRepository(JsonObject jsonRepository) {}
                 String fullName = currentRepository.getString("full_name");
                 String starsGiven = currentRepository.getString("stargazers_count").toString();
                 String watchersCount = currentRepository.getString("watchers_count").toString();

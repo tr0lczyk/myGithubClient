@@ -7,4 +7,25 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_connect">No Connection to the internet</string>
     <string name="anon_s_repositories">Anon\'s repositories</string>
+    <string name="no_connection">No internet connection</string>
+    <string name="nothing_there">You have to type something...</string>
+    <string name="not_a_user">is not a user you are looking for...</string>
+    <string name="likes">The likes of</string>
+    <string name="forbidden">are forbidden in this land!</string>
+    <string name="wrong">\? More like WRONG USERNAME !!!</string>
+    <string name="spoon">There is no spoon. And there is no</string>
+    <string name="dot">.</string>
+    <string name="error">Error 404</string>
+    <string name="search">Search again</string>
+    <string name="fake_star_number">342</string>
+    <string name="fake_repo_name">tr0lczyk/mojeBardzowzneRepo</string>
+    <string name="search_github">Search GitHub</string>
+    <string name="what_to_type">type the Username</string>
+    <string name="search_user">Search</string>
+    <string name="fake_repo_kielce_name">KielceTourGuide</string>
+    <string name="fake_owner_name">tr0lczyk</string>
+    <string name="stars">Stars</string>
+    <string name="fake_count">0</string>
+    <string name="watchers">Watchers</string>
+    <string name="forks">Forks</string>
 </resources>
