@@ -90,24 +90,22 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
     public void onLoadFinished(Loader<List<Repository>> loader, List<Repository> data) {
         newAdapter.clear();
         if(data != null && !data.isEmpty()){
-            String userName = getArguments().getString("userName");
-            TextView owner = rootView.findViewById(R.id.repository_owner);
-            owner.setText(userName + getString(R.string.reposs));
-            View progressBar = rootView.findViewById(R.id.progressBar);
-            progressBar.setVisibility(View.GONE);
-            if(data != null && !data.isEmpty()){
-                newAdapter.addAll(data);
-            } else {
-                Toast toast = Toast.makeText(getActivity(),"No repositories found",Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
-            }
+            repositoryFullfill(data);
 
         } else {
             TextView owner = rootView.findViewById(R.id.repository_owner);
             owner.setText(R.string.long_face);
             alertDialog();
         }
+    }
+
+    private void repositoryFullfill(List<Repository> data) {
+        String userName = getArguments().getString("userName");
+        TextView owner = rootView.findViewById(R.id.repository_owner);
+        owner.setText(userName + getString(R.string.reposs));
+        View progressBar = rootView.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
+        newAdapter.addAll(data);
     }
 
     @Override

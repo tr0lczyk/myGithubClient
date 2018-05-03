@@ -41,8 +41,8 @@ public class SearchFragment extends Fragment {
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     } else{
-                        String URL_LINK = getString(R.string.url);
-                        outputLink = URL_LINK.replace("{user}", userInput);
+                        String url_link = getString(R.string.url);
+                        outputLink = url_link.replace("{user}", userInput);
                         RepositoryFragment repositoryFragment= new RepositoryFragment();
                         repositoryFragment.setArguments(buildBundle(outputLink, userInput));
                         android.support.v4.app.FragmentManager manager = getFragmentManager();
