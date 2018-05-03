@@ -13,9 +13,7 @@ import static com.example.android.mygithubclient.util.FileUtils.getFileSize;
 
 public class DetailsFragment extends Fragment {
 
-    public DetailsFragment() {
-        // Required empty public constructor
-    }
+    public DetailsFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,6 +65,6 @@ public class DetailsFragment extends Fragment {
     }
 
     private String toRepositoryType(boolean isOpenSource){
-        return isOpenSource ? "Public": "Private";
+        return isOpenSource ? "Private" : "Public";
     }
 }
