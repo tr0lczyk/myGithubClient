@@ -1,6 +1,7 @@
 package com.example.android.mygithubclient;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,26 +9,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import static com.example.android.mygithubclient.util.DateUtils.isoDateToNormal;
+import static com.example.android.mygithubclient.util.FileUtils.getFileSize;
 
 public class DetailsFragment extends Fragment {
 
-    private View rootView;
-
-    public DetailsFragment() {
-        // Required empty public constructor
-    }
+    public DetailsFragment(){}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.detail_layout,container,false);
+        View rootView = inflater.inflate(R.layout.detail_layout, container, false);
 
+        assert getArguments() != null;
         Repository currentRepository = getArguments().getParcelable("object");
 
         ImageView imageView = rootView.findViewById(R.id.avatarImage);
+        assert currentRepository != null;
         Picasso.get().load(currentRepository.getAvatar()).into(imageView);
 
         TextView ownerLogin = rootView.findViewById(R.id.ownerLogin);
@@ -72,28 +71,4 @@ public class DetailsFragment extends Fragment {
     private String toRepositoryType(boolean isOpenSource){
         return isOpenSource ? "Public": "Private";
     }
-
-    //TODO wyciagnac do osobnej klasy np. FileUtils przydaly by sie unit testy
-    private String getFileSize(long size) {
-        if (size <= 0){
-            return "0";
-        }
-        String[] units = new String[] { "b", "kb", "mb", "gb", "tb" };
-        int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
-        return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
-    }
-
-    //TODO wyciagnac do osobnej klasy np. DateUtils przydaly by sie unit testy, co jezeli isoDate jest nieprawidłowe itp
-    private String isoDateToNormal(String isoDate){
-        SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-        Date date = new Date();
-        try{
-            date = sd1.parse(isoDate.replaceAll("Z$", "+0000"));
-        } catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        SimpleDateFormat sd2 = new SimpleDateFormat("dd-MM-yyyy");
-        return sd2.format(date);
-    }
-
 }

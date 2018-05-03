@@ -33,17 +33,10 @@ public class Repository implements Parcelable {
 
     private String name;
 
-    //TODO za duzo argumentow w konstruktorze, albo ustawiaj to przez settery albo stworz RepositoryBuilder wg patternu Builder
-    // , wtedy tworzyl bys to jako
-    // Repository.builder()
-    //  .fullName("name")
-    //  .starsGiven(3)
-    // ..
-    //  .build();
-    public Repository(String fullName, String starsGiven, String avatar, String userLogin,
-                      String watchersCount, String forksCount, boolean openSource,
-                      String  programmingLanguage, String issuesCount, String branchesType,
-                      String createdDate, String updatedDate, long sizeRepo, String name){
+    Repository(String fullName, String starsGiven, String avatar, String userLogin,
+               String watchersCount, String forksCount, boolean openSource,
+               String programmingLanguage, String issuesCount, String branchesType,
+               String createdDate, String updatedDate, long sizeRepo, String name){
 
         this.fullName = fullName;
         this.starsGiven = starsGiven;
@@ -140,7 +133,7 @@ public class Repository implements Parcelable {
         dest.writeString(this.name);
     }
 
-    protected Repository(Parcel in) {
+    private Repository(Parcel in) {
         this.fullName = in.readString();
         this.starsGiven = in.readString();
         this.avatar = in.readString();
@@ -160,7 +153,7 @@ public class Repository implements Parcelable {
     public static final Parcelable.Creator<Repository> CREATOR = new Parcelable.Creator<Repository>() {
         @Override
         public Repository createFromParcel(Parcel source) {
-            return new Repository(source);
+            return new RepositoryBuilder().setIn(source).createRepository();
         }
 
         @Override

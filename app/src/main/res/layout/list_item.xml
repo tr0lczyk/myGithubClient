@@ -11,11 +11,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/listitem_image_style" />
+        style="@style/listitem_image_style"
+        android:contentDescription="@string/content_description"/>
 
     <TextView
         android:id="@+id/textView5"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/repositoryImage"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/repositoryImage"
@@ -29,7 +29,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/staricon"
-        style="@style/listitem_second_imageView" />
+        style="@style/listitem_second_imageView"
+        android:contentDescription="@string/content_description"/>
 
     <TextView
         android:id="@+id/textView6"

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,25 +17,24 @@ import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 public class SearchFragment extends Fragment {
 
-    private static final String URL_LINK = "https://api.github.com/users/{user}/repos";
     private String userInput;
     private EditText editText;
     private String outputLink;
-    private Button searchButton;
 
     public SearchFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.search_layout,container,false);
         editText = rootView.findViewById(R.id.editText);
-        searchButton = rootView.findViewById(R.id.button_search);
+        Button searchButton = rootView.findViewById(R.id.button_search);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UIUtil.hideKeyboard(getActivity());
                 ConnectivityManager connectionPossible = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                assert connectionPossible != null;
                 NetworkInfo networkInfo = connectionPossible.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected()) {
                     userInput = editText.getText().toString().trim();
@@ -43,10 +43,12 @@ public class SearchFragment extends Fragment {
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     } else{
+                        String URL_LINK = getString(R.string.url);
                         outputLink = URL_LINK.replace("{user}", userInput);
                         RepositoryFragment repositoryFragment= new RepositoryFragment();
                         repositoryFragment.setArguments(buildBundle(outputLink, userInput));
                         android.support.v4.app.FragmentManager manager = getFragmentManager();
+                        assert manager != null;
                         manager.beginTransaction().replace(R.id.view_pager, repositoryFragment,repositoryFragment.getTag()).addToBackStack(null).commit();
                     }
                 } else {

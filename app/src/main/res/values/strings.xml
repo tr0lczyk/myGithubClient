@@ -28,4 +28,17 @@
     <string name="fake_count">0</string>
     <string name="watchers">Watchers</string>
     <string name="forks">Forks</string>
+    <string name="fake_package">Package</string>
+    <string name="issues">Issues</string>
+    <string name="fake_branch">0/master</string>
+    <string name="branch">branch</string>
+    <string name="fake_date">12/02/2018</string>
+    <string name="fake_size">123.8</string>
+    <string name="last_update">Last update at</string>
+    <string name="events">Events</string>
+    <string name="commits">Commits</string>
+    <string name="content_description">image</string>
+    <string name="url">https://api.github.com/users/{user}/repos</string>
+    <string name="reposs">\'s repositories:</string>
+    <string name="longface">:(</string>
 </resources>
