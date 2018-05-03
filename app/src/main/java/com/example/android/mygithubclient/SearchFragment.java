@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,7 +23,7 @@ public class SearchFragment extends Fragment {
     public SearchFragment() {}
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.search_layout,container,false);
         editText = rootView.findViewById(R.id.editText);
@@ -34,7 +33,6 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
                 UIUtil.hideKeyboard(getActivity());
                 ConnectivityManager connectionPossible = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-                assert connectionPossible != null;
                 NetworkInfo networkInfo = connectionPossible.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected()) {
                     userInput = editText.getText().toString().trim();
@@ -48,7 +46,6 @@ public class SearchFragment extends Fragment {
                         RepositoryFragment repositoryFragment= new RepositoryFragment();
                         repositoryFragment.setArguments(buildBundle(outputLink, userInput));
                         android.support.v4.app.FragmentManager manager = getFragmentManager();
-                        assert manager != null;
                         manager.beginTransaction().replace(R.id.view_pager, repositoryFragment,repositoryFragment.getTag()).addToBackStack(null).commit();
                     }
                 } else {

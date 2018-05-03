@@ -1,8 +1,6 @@
 package com.example.android.mygithubclient;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +12,17 @@ import java.util.ArrayList;
 
 public class RepositoryAdapter extends ArrayAdapter<Repository> {
 
-    RepositoryAdapter(Context context, ArrayList<Repository> repositories){
+    public RepositoryAdapter(Context context, ArrayList<Repository> repositories){
         super(context,0,repositories);
     }
 
-    @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position,  View convertView,  ViewGroup parent) {
 
-        @SuppressLint("ViewHolder") View listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
+        View listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
         Repository currentRepository = getItem(position);
 
         TextView repositoryName = listItemView.findViewById(R.id.textView5);
-        assert currentRepository != null;
         repositoryName.setText(currentRepository.getFullName());
 
         TextView starNumber = listItemView.findViewById(R.id.textView6);

@@ -10,7 +10,7 @@ public class RepositoryLoader extends android.support.v4.content.AsyncTaskLoader
 
     private String repositoryUrl;
 
-    RepositoryLoader(Context context, String url){
+    public RepositoryLoader(Context context, String url){
         super(context);
         repositoryUrl = url;
     }
@@ -28,6 +28,7 @@ public class RepositoryLoader extends android.support.v4.content.AsyncTaskLoader
             return null;
         }
         Log.e(LOG, "Loader fetching");
-        return Networking.fetchMarketRecordData(repositoryUrl);
+        List<Repository> marketRecords = Networking.fetchMarketRecordData(repositoryUrl);
+        return marketRecords;
     }
 }

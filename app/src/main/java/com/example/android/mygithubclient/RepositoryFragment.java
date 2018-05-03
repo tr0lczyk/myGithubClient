@@ -1,19 +1,20 @@
 package com.example.android.mygithubclient;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -28,7 +29,7 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.item_list,container,false);
         ListView listView = rootView.findViewById(R.id.listView);
@@ -45,7 +46,6 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
                 DetailsFragment detailsFragment= new DetailsFragment();
                 detailsFragment.setArguments(buildBundle(currentRepository));
                 android.support.v4.app.FragmentManager manager = getFragmentManager();
-                assert manager != null;
                 manager.beginTransaction().replace(R.id.view_pager, detailsFragment,detailsFragment.getTag()).addToBackStack(null).commit();
             }
         });
@@ -59,7 +59,6 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
     }
 
     private void alertDialog(){
-        assert getArguments() != null;
         String user = getArguments().getString("userName");
         String[] answers = {user + getString(R.string.not_a_user), getString(R.string.likes) + user + getString(R.string.forbidden),
                 user + getString(R.string.wrong), getString(R.string.spoon) + user + getString(R.string.dot)};
@@ -81,36 +80,38 @@ public class RepositoryFragment extends Fragment implements LoaderManager.Loader
         alert.show();
     }
 
-    @NonNull
     @Override
     public Loader<List<Repository>> onCreateLoader(int id, Bundle args) {
-        assert getArguments() != null;
         String urlLink = getArguments().getString("urlLink");
         return new RepositoryLoader(getActivity(), urlLink);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
-    public void onLoadFinished(@NonNull Loader<List<Repository>> loader, List<Repository> data) {
+    public void onLoadFinished(Loader<List<Repository>> loader, List<Repository> data) {
         newAdapter.clear();
         if(data != null && !data.isEmpty()){
-            assert getArguments() != null;
             String userName = getArguments().getString("userName");
             TextView owner = rootView.findViewById(R.id.repository_owner);
             owner.setText(userName + getString(R.string.reposs));
             View progressBar = rootView.findViewById(R.id.progressBar);
             progressBar.setVisibility(View.GONE);
-            newAdapter.addAll(data);
+            if(data != null && !data.isEmpty()){
+                newAdapter.addAll(data);
+            } else {
+                Toast toast = Toast.makeText(getActivity(),"No repositories found",Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+
         } else {
             TextView owner = rootView.findViewById(R.id.repository_owner);
-            owner.setText(R.string.longface);
+            owner.setText(R.string.long_face);
             alertDialog();
         }
     }
 
     @Override
-    public void onLoaderReset(@NonNull Loader<List<Repository>> loader) {
+    public void onLoaderReset(Loader<List<Repository>> loader) {
         newAdapter.clear();
     }
-
 }

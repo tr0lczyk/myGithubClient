@@ -1,7 +1,6 @@
 package com.example.android.mygithubclient;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,24 +8,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
-
 import static com.example.android.mygithubclient.util.DateUtils.isoDateToNormal;
 import static com.example.android.mygithubclient.util.FileUtils.getFileSize;
 
 public class DetailsFragment extends Fragment {
 
-    public DetailsFragment(){}
+    public DetailsFragment() {
+        // Required empty public constructor
+    }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.detail_layout, container, false);
 
-        assert getArguments() != null;
         Repository currentRepository = getArguments().getParcelable("object");
 
         ImageView imageView = rootView.findViewById(R.id.avatarImage);
-        assert currentRepository != null;
         Picasso.get().load(currentRepository.getAvatar()).into(imageView);
 
         TextView ownerLogin = rootView.findViewById(R.id.ownerLogin);
