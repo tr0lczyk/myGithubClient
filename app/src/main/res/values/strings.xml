@@ -39,4 +39,8 @@
     <string name="url">https://api.github.com/users/{user}/repos</string>
     <string name="reposs">\'s repositories:</string>
     <string name="long_face">:(</string>
+    <string name="no_info">No info</string>
+    <string name="only_null">null</string>
+    <string name="privates">Private</string>
+    <string name="publics">Public</string>
 </resources>
